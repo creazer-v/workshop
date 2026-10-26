@@ -202,7 +202,8 @@ function addLinks(doc: PDFDocument, page: PDFPage, sheet: HTMLElement, xScale: n
   const origin = sheet.getBoundingClientRect()
   for (const link of sheet.querySelectorAll<HTMLAnchorElement>('a[href]')) {
     const href = link.href
-    if (!/^(https?:|mailto:|tel:)/i.test(href)) continue
+    // ATS scanners can mistake tel:/mailto: PDF annotation targets for visible punctuation errors.
+    if (!/^https?:\/\//i.test(href)) continue
     for (const rect of link.getClientRects()) {
       const left = (rect.left - origin.left) * xScale
       const bottom = A4_HEIGHT - (rect.bottom - origin.top) * yScale

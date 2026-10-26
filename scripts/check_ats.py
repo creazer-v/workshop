@@ -210,8 +210,8 @@ def main():
                     for sheet in document.pages
                     for annotation in sheet.get("/Annots", [])
                 ]
-                if len(links) < 4:
-                    raise AssertionError("PDF contact hyperlinks are missing.")
+                if len(links) < 2 or any(not str(link).startswith(("https://", "http://")) for link in links):
+                    raise AssertionError("Only web contact links should be annotated in the PDF.")
                 page.get_by_role("button", name="COLOR THEME").click()
                 bar_toggle = page.get_by_role("button", name="Section title bars")
                 heading = page.locator(".resume-pages .resume-sheet .resume-content h2").first
