@@ -5,7 +5,7 @@ import { legacySampleMarkdown, monochromeSampleMarkdown, previousEntryLayoutSamp
 describe('parseResume', () => {
   it('reads the fixed resume metadata and keeps the Markdown body', () => {
     const resume = parseResume(sampleMarkdown)
-    expect(resume.name).toBe('Aarav Sharma')
+    expect(resume.name).toBe('Something')
     expect(resume.website).toBe('https://example.com/')
     expect(resume.linkedin).toContain('linkedin.com')
     // colors are now optional in front matter; sample has no colors block so falls back to defaults
@@ -39,7 +39,7 @@ describe('parseResume', () => {
 
   it('rejects unreadable front matter and duplicate keys', () => {
     expect(() => parseResume('## Summary')).toThrow(/front matter/i)
-    expect(() => parseResume(sampleMarkdown.replace('name: "Aarav Sharma"', 'name: "Aarav Sharma"\nname: "Other"'))).toThrow(/Front matter:/)
+    expect(() => parseResume(sampleMarkdown.replace('name: "Something"', 'name: "Something"\nname: "Other"'))).toThrow(/Front matter:/)
   })
 
   it('rejects unsafe or invalid color and URL settings', () => {
@@ -77,6 +77,6 @@ describe('parseResume', () => {
   })
 
   it('accepts Windows line endings and a byte order mark', () => {
-    expect(parseResume(`\uFEFF${sampleMarkdown.replace(/\n/g, '\r\n')}`).name).toBe('Aarav Sharma')
+    expect(parseResume(`\uFEFF${sampleMarkdown.replace(/\n/g, '\r\n')}`).name).toBe('Something')
   })
 })

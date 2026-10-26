@@ -7,7 +7,7 @@ import { previousEntryLayoutSampleMarkdown, sampleMarkdown } from './sample'
 describe('resume preview', () => {
   it('renders readable resume text and clickable website and LinkedIn links', () => {
     const html = renderToStaticMarkup(<ResumePreview resume={parseResume(sampleMarkdown)} />)
-    expect(html).toContain('<h1>Aarav Sharma</h1>')
+    expect(html).toContain('<h1>Something</h1>')
     expect(html).toContain('Professional Experience')
     expect(html.indexOf('Professional Experience')).toBeLessThan(html.indexOf('Education'))
     expect(html.indexOf('Education')).toBeLessThan(html.indexOf('Core Skills'))

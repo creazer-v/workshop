@@ -1,9 +1,9 @@
 export const sampleMarkdown = `---
-name: "A Sharma"
+name: "Something"
 title: "Software Engineer"
 location: "Bengaluru, India"
 phone: "+91xxxxxxxxxx"
-email: "a.sharma@example.com"
+email: "something@example.com"
 website: "https://example.com"
 linkedin: "https://www.linkedin.com/in/your-profile"
 fontSize:
