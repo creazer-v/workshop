@@ -1,0 +1,9 @@
+node_modules/
+dist/
+*.local
+*.tsbuildinfo
+__pycache__/
+*.pyc
+.devin/config.local.json
+_UL
+scripts/*.png
